@@ -75,7 +75,6 @@ gulp.task("copyfiles", function() {
     // Copy clean-blog less files
     gulp.src("vendor/bower_dl/clean-blog/less/**")
         .pipe(gulp.dest("resources/assets/less/clean-blog"));
-
 });
 
 /**
@@ -90,10 +89,16 @@ elixir(function(mix) {
             'js/jquery.dataTables.js',
             'js/dataTables.bootstrap.js'
         ],
-        'public/assets/js/admin.js',
-        'resources/assets'
-    );
+        'public/assets/js/admin.js', 'resources/assets');
 
-    // Compile Less
+    // Combine blog scripts
+    mix.scripts([
+        'js/jquery.js',
+        'js/bootstrap.js',
+        'js/blog.js'
+    ], 'public/assets/js/blog.js', 'resources/assets');
+
+    // Compile CSS
     mix.less('admin.less', 'public/assets/css/admin.css');
+    mix.less('blog.less', 'public/assets/css/blog.css');
 });
