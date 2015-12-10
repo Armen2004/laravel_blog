@@ -34,7 +34,10 @@ $router->group([
     delete('admin/upload/file', 'UploadController@deleteFile');
     post('admin/upload/folder', 'UploadController@createFolder');
     delete('admin/upload/folder', 'UploadController@deleteFolder');
+
 });
+get('rss', 'BlogController@rss');
+get('sitemap.xml', 'BlogController@siteMap');
 
 // Logging in and out
 get('/auth/login', 'Auth\AuthController@getLogin');
